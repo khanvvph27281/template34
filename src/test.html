@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slider</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .slider {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .slider-container {
+      display: flex;
+      width: 300%; /* Đặt độ rộng của container là 300% để chứa các ảnh */
+      transition: transform 0.5s ease;
+    }
+
+    .slider-item {
+      flex: 0 0 33.33%; /* Đặt độ rộng của mỗi ảnh là 33.33% */
+    }
+
+    .slider-item img {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <div class="slider-container">
+      <div class="slider-item">
+        <img src="https://example.com/image1.jpg" alt="Image 1">
+      </div>
+      <div class="slider-item">
+        <img src="https://example.com/image2.jpg" alt="Image 2">
+      </div>
+      <div class="slider-item">
+        <img src="https://example.com/image3.jpg" alt="Image 3">
+      </div>
+    </div>
+    <button class="slider-prev">Previous</button>
+    <button class="slider-next">Next</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const slider = document.querySelector('.slider');
+      const sliderContainer = slider.querySelector('.slider-container');
+      const prevButton = slider.querySelector('.slider-prev');
+      const nextButton = slider.querySelector('.slider-next');
+      const sliderItems = slider.querySelectorAll('.slider-item');
+      const itemWidth = slider.offsetWidth / 3; /* Chiều rộng của mỗi ảnh */
+      let currentPosition = 0;
+
+      function slideToNext() {
+        currentPosition -= itemWidth;
+        if (currentPosition < -itemWidth * (sliderItems.length - 1)) {
+          currentPosition = 0;
+        }
+        sliderContainer.style.transform = `translateX(${currentPosition}px)`;
+      }
+
+      function slideToPrev() {
+        currentPosition += itemWidth;
+        if (currentPosition > 0) {
+          currentPosition = -itemWidth * (sliderItems.length - 1);
+        }
+        sliderContainer.style.transform = `translateX(${currentPosition}px)`;
+      }
+
+      nextButton.addEventListener('click', function() {
+        slideToNext();
+      });
+
+      prevButton.addEventListener('click', function() {
+        slideToPrev();
+      });
+    });
+  </script>
+</body>
+</html>
