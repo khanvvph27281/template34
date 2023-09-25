@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <title>Slick Slider Example</title>
+    <style>
+        /* CSS styles go here */
+        .slider {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .slick-slide {
+            background: #ddd;
+            padding: 20px;
+            border: 1px solid #999;
+            text-align: center;
+            font-size: 24px;
+        }
+        .selected {
+            background: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slick-slide selected">Slide 1</div>
+        <div class="slick-slide">Slide 2</div>
+        <div class="slick-slide">Slide 3</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Khởi tạo slider Slick
+            $('.slider').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                
+                arrows: true,
+                prevArrow: '<button class="slick-prev">Previous</button>',
+                nextArrow: '<button class="slick-next">Next</button>',
+            });
+
+            // Lắng nghe sự kiện sau khi thay đổi slide
+            $('.slider').on('afterChange', function(event, slick, currentSlide) {
+                // Xóa lớp "selected" từ tất cả các phần tử trong slider
+                $('.slider .slick-slide').removeClass('selected');
+
+                // Thêm lớp "selected" vào phần tử hiện tại
+                $('.slider .slick-slide').eq(currentSlide).addClass('selected');
+            });
+        });
+    </script>
+</body>
+</html>

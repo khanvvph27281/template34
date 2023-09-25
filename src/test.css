@@ -1,0 +1,143 @@
+/* .line li a:hover{
+    text-decoration: underline 2px;
+    color: #3EED8B;
+    text-underline-offset: 5px;
+   
+}
+.image-left img{
+   
+    border-bottom-right-radius: 400px;
+    
+}
+.image-left{
+    border-top-left-radius: 400px;
+    border-bottom-right-radius: 400px;
+
+}
+.image-slider {
+  width: 90%;
+  
+  margin-left:  auto;
+  
+} */
+
+/* .image-slider .slick-slide img {
+  width: 100%;
+ 
+  margin: 0 auto;
+} */
+
+
+
+/* @media (max-width: 1280px) {
+  .image-slider {
+    width: 100%;
+    margin-left:  auto;
+  }
+}
+@media (min-width: 1281px) {
+  .image-slider {
+    width: 95%;
+    margin-left:  auto;
+  }
+}
+@media (min-width: 1920px) {
+  .image-slider {
+    width: 90%;
+    margin-left:  auto;
+  }
+} */
+@media (max-width: 1024px) {
+  .repon_menu{
+   z-index: 10;
+   position: fixed;
+   background-color: #90f3b1;
+   width: 100%;
+   height: 100vh;
+   justify-content: center;
+   top: 0;
+   left: 0;
+   align-items: center;
+   text-align: center;
+   margin-left: -120%;
+   transition: all 1s ease;
+   
+  }
+   .mobile-menu{
+   margin-left: 0;
+   font-size: 1.5rem;
+  }
+  .repon_menu ul li:hover{
+   text-decoration: underline;
+   font-size: 1.75rem;
+   color: black;
+  }
+  .icons{
+   background: var(--dd-600, linear-gradient(90deg, #1CAB55 0%, #04A4EC 100%))
+  }
+  table tr th{
+   font-family: roboto;
+   font-size: 0.5rem;
+   border: 1px solid var(--Stroke, #EBEBEB);
+   color: white;
+}
+   table tr td{
+   border: 1px solid var(--Stroke, #EBEBEB);
+   background: white;
+   font-family: roboto;
+   padding: 0.45rem 0.5rem;
+   font-size: 0.6rem;
+   color: rgba(0, 0, 0, 0.64);
+}
+
+}
+@media (min-width: 1025px) {
+  table tr th{
+ font-family: roboto;
+ font-size: 1rem;
+ border: 1px solid var(--Stroke, #EBEBEB);
+ color: white;
+}
+table tr td{
+ border: 1px solid var(--Stroke, #EBEBEB);
+ background: white;
+ font-family: roboto;
+ padding: 0.75rem 1rem;
+ font-size: 1rem;
+ color: rgba(0, 0, 0, 0.64);
+}
+/* th:nth-child(1) ,td:nth-child(1){
+  width: 5%;
+} */
+/* th:nth-child(2) {
+  width: 44.3%;
+}
+td:nth-child(2){
+  width: 45%;
+}
+th[colspan="2"]{
+  width: 50%;
+}
+th[rowspan="2"]{
+  width: 5%;
+}
+td:nth-child(3) ,th:nth-child(3){
+  width: 25%;
+} */
+
+
+
+
+}
+table tr{
+  background: var(--dd-400, linear-gradient(90deg, #50C577 0%, #2DBEFC 100%));
+}
+.table-color{
+  background: var(--dd-400, linear-gradient(90deg, #50C577 0%, #2DBEFC 100%))
+}
+.table-text{
+  color: rgba(0, 0, 0, 0.64);
+}
+
+
+

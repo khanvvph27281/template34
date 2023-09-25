@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="../src/template3.css">
+
+
+
+
+</head>
+
+<body>
+    <section class="container mx-auto box-border">
+
+        <div class=" flex  items-center justify-between  py-[0.5rem] ">
+            <div class="">
+                <img src="../image/image 3.png" alt="" class="object-cover max-w-[100%] max-h-[100%]">
+            </div>
+            <div class="xl:text-black font-medium text-[1.125rem] repon_menu  flex   xl:items-center  menu-underline">
+                <ul class="xl:flex xl:gap-[3rem] grid gap-[45%] text-white  ">
+                    <li><a href="">Ưu Đãi</a></li>
+                    <li><a href="">Dịch Vụ </a></li>
+                    <li><a href="">Giới Thiệu </a></li>
+                    <li><a href="">Đội ngũ bác sĩ</a></li>
+                    <li><a href="">Bảng Giá</a></li>
+                    <li><a href="">Thư Viện</a></li>
+                    <li><a href="">Liên Hệ</a></li>
+                </ul>
+            </div>
+
+            <button class="xl:hidden absolute z-10 top-[2%] right-[8%] menu">
+                <img src="../image/menu.png" alt="" class="object-cover w-[24px] h-[24px]">
+            </button>
+            <button class="border px-[1rem] py-[0.5rem] buttonClose xl:hidden hidden fixed right-[10%]">
+                <p>Đóng</p>
+            </button>
+            <div class="bg-tell rounded-[2.5rem]">
+                <button class="xl:flex gap-[0.5rem] pl-[1rem] pr-[1.5rem] py-[0.5rem]   hidden">
+                    <img src="../image/Grouptell.jpg" alt="" class="object-cover max-w-[100%] max-h-[100%] ">
+                    <a href=" tel:1900 1806">
+                        <p class="font-semibold text-[0.875rem] text-white">Hotline: 1900 1806</p>
+                    </a>
+                </button>
+
+            </div>
+        </div>
+
+
+    </section>
+    <section>
+        <div class="">
+            <img src="../image/Screenshot_12 1.png" alt="" class="object-cover w-[100%] h-[100%]">
+        </div>
+    </section>
+    <script>
+        function toggleMobileMenu() {
+
+            const menuReponsive = document.querySelector(".menu");
+            const Reponsive = document.querySelector(".repon_menu");
+            const buttonClose = document.querySelector(".buttonClose");
+            if (window.innerWidth > 1024) {
+                menuReponsive.addEventListener('click', () => {
+                    Reponsive.style.display = "block";
+                    Reponsive.classList.toggle('mobile-menu');
+                    menuReponsive.style.display = "none";
+                    buttonClose.style.display = "block";
+                });
+                buttonClose.addEventListener('click', () => {
+                    if (buttonClose.style.display == "block") {
+                        Reponsive.classList.remove('mobile-menu');
+                        menuReponsive.style.display = "block";
+                        buttonClose.style.display = "none";
+                    }
+                });
+            }else{
+                menuReponsive.style.display = "none";
+                buttonClose.style.display = "none";
+            }
+
+        }
+        toggleMobileMenu();
+
+    </script>
+
+
+</body>
+
+</html>

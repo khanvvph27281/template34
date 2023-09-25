@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* CSS styles for the slider */
+        .slider-container {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* CSS styles for navigation buttons */
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .slider-nav button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+    </style>
+    <title>Scrolling Slider Example</title>
+</head>
+<body>
+    <button id="toggleButton">Ẩn/Hiện</button>
+    <img id="hiddenImage" src="../image/Screenshot_12 1.png" alt="" class="object-cover w-[100%] h-[100%]" style="display: none;">
+ <script>
+    const toggleButton = document.getElementById("toggleButton");
+    const hiddenImage = document.getElementById("hiddenImage");
+
+    toggleButton.addEventListener('click', () => {
+        if (hiddenImage.style.display === "none") {
+            hiddenImage.style.display = "block"; // Hiển thị ảnh
+            toggleButton.style.display = "none"; // Ẩn nút
+        } else {
+            hiddenImage.style.display = "none"; // Ẩn ảnh
+            toggleButton.style.display = "block"; // Hiển thị nút
+        }
+    });
+</script>
+
+    
+</body>
+</html>

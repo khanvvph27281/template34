@@ -1,67 +1,242 @@
-function toggleMenu() {
-    const menuItems = document.getElementById('menuItems');
-    menuItems.classList.toggle('hidden');
-  }
-  
-  function handleResize() {
-    const menuItems = document.getElementById('menuItems');
-    if (window.innerWidth >= 1024) {
-      menuItems.classList.remove('hidden');
-    } else {
-      menuItems.classList.add('hidden');
-    }
-  }
-  
-  function initializeMenu() {
-    const menuToggle = document.getElementById('menuToggle');
-    menuToggle.addEventListener('click', toggleMenu);
-    window.addEventListener('load', handleResize);
-    window.addEventListener('resize', handleResize);
-  }
-  
-  initializeMenu();
 
-  document.addEventListener("DOMContentLoaded", function() {
-    const slider = document.querySelector('.slider');
-  
-    new SlickSlider(slider, {
-      autoplay: true,
-      dots: true,
-      prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-      nextArrow: '<button type="button" class="slick-next">Next</button>'
-    });
-  });
+const menuReponsive = document.querySelector(".menu-button")
+const Reponsive = document.querySelector(".menu-reponsive")
+menuReponsive.addEventListener('click', () => {
+  Reponsive.classList.toggle('mobile-menu')
+  menuReponsive.classList.toggle('mobile-menu')
+})
 
-  document.addEventListener("DOMContentLoaded", function() {
-    const slider = document.querySelector('.slider');
-    const sliderContainer = slider.querySelector('.slider-container');
-    const prevButton = slider.querySelector('.slider-prev');
-    const nextButton = slider.querySelector('.slider-next');
-    const sliderItems = slider.querySelectorAll('.slider-item');
-    const itemWidth = slider.offsetWidth / 3; /* Chiều rộng của mỗi ảnh */
-    let currentPosition = 0;
-  
-    function slideToNext() {
-      currentPosition -= itemWidth;
-      if (currentPosition < -itemWidth * (sliderItems.length - 1)) {
-        currentPosition = 0;
-      }
-      sliderContainer.style.transform = `translateX(${currentPosition}px)`;
-    }
-  
-    function slideToPrev() {
-      currentPosition += itemWidth;
-      if (currentPosition > 0) {
-        currentPosition = -itemWidth * (sliderItems.length - 1);
-      }
-      sliderContainer.style.transform = `translateX(${currentPosition}px)`;
-    }
-  
-    nextButton.addEventListener('click', function() {
-      slideToNext();
+  function initializeSlider() {
+    var slider = $('.image-slider').slick({
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1.5
+          }
+        },
+        {
+          breakpoint: 1028,
+          settings: {
+            slidesToShow: 2
+          }
+        }
+      ],
+      arrows: false
     });
   
-    prevButton.addEventListener('click', function() {
-      slideToPrev();
+    $('.slick-prev').click(function() {
+      slider.slick('slickPrev');
     });
+  
+    $('.slick-next').click(function() {
+      slider.slick('slickNext');
+    });
+  }
+  
+  $(document).ready(function() {
+    initializeSlider();
   });
+  //slide anh2
+  function initializeCarousel() {
+    var $carousel = $('.carousel');
+
+    $carousel.slick({
+        dots: true,
+        dotsClass: 'slick-dots',
+        centerMode: false,
+        slidesToShow: 4,
+        prevArrow: false,
+        nextArrow: false,
+        customPaging: function (slider, i) {
+            return '<button class="dot"></button>'; // Sử dụng dấu chấm thay vì số
+        },
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    centerMode: false,
+                    slidesToShow: 1
+                }
+            },
+            {
+              breakpoint: 1028,
+              settings: {
+                  arrows: false,
+                  centerMode: false,
+                  slidesToShow: 2
+              }
+          },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    centerMode: false,
+                    slidesToShow: 1
+                }
+            }
+        ]
+    }).on('afterChange', function (event, slick, currentSlide) {
+        // Remove any previously added CSS classes
+
+        // Check if it's the first or last slide
+        if (currentSlide === 0) {
+            $('#prevBtn').prop('disabled', true);
+        } else {
+            $('#prevBtn').prop('disabled', false);
+        }
+
+        if (currentSlide === slick.slideCount - 1) {
+            $('#nextBtn').prop('disabled', true);
+        } else {
+            $('#nextBtn').prop('disabled', false);
+        }
+    });
+
+    $("#prevBtn").on("click", function () {
+        $carousel.slick('slickPrev');
+    });
+
+    $("#nextBtn").on("click", function () {
+        $carousel.slick('slickNext');
+    });
+}
+
+$(document).ready(function () {
+    initializeCarousel();
+});
+//slide ảnh 3
+function initializeSlickSlider() {
+  $(".slider").slick({
+      centerMode: true,
+      centerPadding: '14%', // Đặt khoảng cách giữa hai đầu của slider
+      slidesToShow: 2.5,
+      slidesToScroll: 1,
+      prevArrow: $(".slick-prevv"),
+      nextArrow: $(".slick-nextt"),
+      responsive: [
+          {
+              breakpoint: 768,
+              settings: {
+                  centerPadding: '0',
+                  slidesToShow: 1,
+              }
+          },
+          {
+              breakpoint: 1028,
+              settings: {
+                  centerPadding: '0',
+                  slidesToShow: 2,
+              }
+          }
+      ]
+  });
+}
+
+$(document).ready(function () {
+  initializeSlickSlider();
+});
+
+  //slide cuối trang 
+  const images = document.querySelectorAll('.image-viewer img');
+        const dots = document.querySelectorAll('.dot');
+        const links = document.querySelectorAll('.link');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img) => {
+                img.style.display = 'none';
+            });
+
+            dots.forEach((dot) => {
+                dot.classList.remove('active-dot');
+                dot.classList.remove('active')
+            });
+
+            images[index].style.display = 'block';
+            dots[index].classList.add('active-dot');
+
+            links.forEach((link, i) => {
+                if (i === index) {
+                    link.classList.add('active-link');
+                } else {
+                    link.classList.remove('active-link');
+                }
+            });
+        }
+        showImage(currentIndex);
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                showImage(currentIndex);
+            });
+        });
+
+        links.forEach((link, index) => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                currentIndex = index;
+                showImage(currentIndex);
+            });
+        });
+  // ẩn hiện div
+ // Lấy danh sách tất cả các button và các div
+ const toggleButtons = document.querySelectorAll(".toggle-button");
+ const contents = document.querySelectorAll(".content");
+
+ // Thêm sự kiện click cho mỗi button
+ toggleButtons.forEach(function (button, index) {
+     button.addEventListener("click", function () {
+         // Lấy tham chiếu đến phần tử div tương ứng
+         const targetContent = contents[index];
+
+         // Toggle trạng thái hiển thị của nội dung
+         targetContent.classList.toggle("hidden");
+
+         // Thay đổi nội dung của nút "Hiện" và "Ẩn"
+         const imgSrc = targetContent.classList.contains("hidden")
+             ? '<img src="../image/Frame 9197.png" alt="">'
+             : '<img src="../image/Frame 9197 (1).png" alt="">';
+
+         // Gán nội dung mới cho nút
+         button.innerHTML = imgSrc;
+     });
+ });
+  //slide ảnh 3
+  $(document).ready(function () {
+    $(".slider").slick({
+        centerMode: true,
+        centerPadding: '14%', // Đặt khoảng cách giữa hai đầu của slider
+        slidesToShow: 2.5,
+        slidesToScroll: 1,
+        prevArrow: $(".slick-prevv"),
+        nextArrow: $(".slick-nextt"),
+        responsive: [
+            {
+                breakpoint: 768, // Điều này sẽ áp dụng khi màn hình có độ rộng ít hơn 768px
+                settings: {
+                    centerPadding: '0',
+                    slidesToShow: 1, // Hiển thị 2 slide đầy đủ
+                }
+            },
+            {
+                breakpoint: 1028, // Điều này sẽ áp dụng khi màn hình có độ rộng ít hơn 768px
+                settings: {
+                    centerPadding: '0',
+                    slidesToShow: 2, // Hiển thị 2 slide đầy đủ
+                }
+            }
+        ]
+    });
+});
